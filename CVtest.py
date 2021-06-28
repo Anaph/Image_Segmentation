@@ -91,11 +91,10 @@ def process(inputvideo, inputannotations, outputimage, outputmask):
         dim = (width, height)
 
         kernel = np.ones((3,3),np.uint8)
-        resized = cv2.dilate(movement,kernel,iterations=2)
-        # resize image
-        # resized = cv2.resize(resized, dim, interpolation = cv2.INTER_AREA)
-        resized = mask(resized,rect)
-        backtorgb = cv2.cvtColor(resized,cv2.COLOR_GRAY2RGB)
+        dilate = cv2.dilate(movement,kernel,iterations=2)
+        
+        masked = mask(dilate,rect)
+        backtorgb = cv2.cvtColor(masked ,cv2.COLOR_GRAY2RGB)
         # cv2.imshow('diff_frame', backtorgb)
 
         frame_resized = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
