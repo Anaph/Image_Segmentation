@@ -1,6 +1,17 @@
 # Image_Segmentation
 
 
+Статус на данный момент:
+
+Ведется написание собственного модуля подготовки изображений для модели.
+
+![alt text](/imagesegmentation.png "Схема работ")
+
+
+
+
+# Здесь !будет! инструкция
+
 virtualenv --no-site-packages --python=python3 ImageSegmentation
 
 
