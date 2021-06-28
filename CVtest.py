@@ -53,8 +53,8 @@ def process(inputvideo, inputannotations, outputimage, outputmask):
     detector = MotionDetector(bg_history=1,
                               bg_skip_frames=1,
                               movement_frames_history=8,
-                              brightness_discard_level=12,
-                              bg_subs_scale_percent=0.5,
+                              brightness_discard_level=10,
+                              bg_subs_scale_percent=0.50,
                               pixel_compression_ratio=0.2,
                               group_boxes=False,
                               expansion_step=1)
@@ -85,20 +85,21 @@ def process(inputvideo, inputannotations, outputimage, outputmask):
         
         ctr += 1
         
-        scale_percent = 200 # percent of original size
-        width = int(movement.shape[1] * scale_percent / 100)
-        height = int(movement.shape[0] * scale_percent / 100)
+        scale_percent = 50 # percent of original size
+        width = int(frame.shape[1] * scale_percent / 100)
+        height = int(frame.shape[0] * scale_percent / 100)
         dim = (width, height)
 
         kernel = np.ones((3,3),np.uint8)
         resized = cv2.dilate(movement,kernel,iterations=2)
         # resize image
-        resized = cv2.resize(resized, dim, interpolation = cv2.INTER_AREA)
+        # resized = cv2.resize(resized, dim, interpolation = cv2.INTER_AREA)
         resized = mask(resized,rect)
         backtorgb = cv2.cvtColor(resized,cv2.COLOR_GRAY2RGB)
         # cv2.imshow('diff_frame', backtorgb)
 
-        cv2.imwrite(outputimage + str(ctr) + '.png', frame)
+        frame_resized = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
+        cv2.imwrite(outputimage + str(ctr) + '.png', frame_resized)
         cv2.imwrite(outputmask + str(ctr) + '.png', backtorgb)
 
         # if cv2.waitKey(1) & 0xFF == ord('q'):
