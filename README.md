@@ -5,7 +5,7 @@
 
 Ведется написание собственного модуля подготовки изображений для модели.
 
-![alt text](/imagesegmentation.png "Схема работ")
+![In progress](/Image_Segmentation.png "Схема работ")
 
 
 
