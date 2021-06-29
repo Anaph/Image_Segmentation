@@ -55,7 +55,7 @@ def process(inputvideo, inputannotations, outputimage, outputmask):
                               movement_frames_history=8,
                               brightness_discard_level=10,
                               bg_subs_scale_percent=0.50,
-                              pixel_compression_ratio=0.2,
+                              pixel_compression_ratio=0.5,
                               group_boxes=False,
                               expansion_step=1)
 
@@ -85,24 +85,32 @@ def process(inputvideo, inputannotations, outputimage, outputmask):
         
         ctr += 1
         
-        scale_percent = 50 # percent of original size
-        width = int(frame.shape[1] * scale_percent / 100)
-        height = int(frame.shape[0] * scale_percent / 100)
+        scale_percent = 200 # percent of original size
+        width = int(movement.shape[1] * scale_percent / 100)
+        height = int(movement.shape[0] * scale_percent / 100)
         dim = (width, height)
 
         kernel = np.ones((3,3),np.uint8)
         dilate = cv2.dilate(movement,kernel,iterations=2)
         
-        masked = mask(dilate,rect)
-        backtorgb = cv2.cvtColor(masked ,cv2.COLOR_GRAY2RGB)
-        # cv2.imshow('diff_frame', backtorgb)
+        dilate_resized = cv2.resize(dilate, dim, interpolation = cv2.INTER_AREA)
+        masked = mask(dilate_resized,rect)
 
-        frame_resized = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
-        cv2.imwrite(outputimage + str(ctr) + '.png', frame_resized)
+        backtorgb = cv2.cvtColor(masked ,cv2.COLOR_GRAY2RGB)
+
+        dim = (736, 544)
+
+        frame = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
+        backtorgb = cv2.resize(backtorgb, dim, interpolation = cv2.INTER_AREA)
+
+        # cv2.imshow('diff_frame', backtorgb)
+        # cv2.imshow('frame', frame)
+
+        cv2.imwrite(outputimage + str(ctr) + '.png', frame)
         cv2.imwrite(outputmask + str(ctr) + '.png', backtorgb)
 
-        # if cv2.waitKey(1) & 0xFF == ord('q'):
-        #     break
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
 
 
