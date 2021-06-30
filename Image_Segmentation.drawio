@@ -1,58 +1,58 @@
-<mxfile host="app.diagrams.net" modified="2021-06-28T17:30:31.173Z" agent="5.0 (X11)" etag="S_UJWzWXkJkRDgm9hGZw" version="14.8.2" type="github">
-  <diagram id="hZKHBh_DFRJHr7uW6gX6" name="Page-1">
-    <mxGraphModel dx="1422" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-10" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="250" y="50" width="200" height="370" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-11" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="450" y="50" width="200" height="370" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-9" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="50" y="50" width="200" height="370" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-1" value="Исследование готовых моделей/решений" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="80" y="90" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-2" value="Изучение датасета" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="80" y="200" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-4" value="Поиск готовых решений для распознавания движения" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="80" y="310" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-5" value="Написание скрипта для подготовки изображений для обучения" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="280" y="240" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-6" value="&lt;div&gt;Написание пайплайна для обучения модели&lt;/div&gt;&lt;div&gt;(или подготовка существующего)&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="280" y="140" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-8" value="Обучение модели и совершенствование модели и датасета" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="480" y="200" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-12" value="Этап исследования проблемы" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="60" width="180" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-13" value="Этап подготовки решения" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="260" y="60" width="180" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-14" value="Этап совершенствования решения" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="60" width="180" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-16" value="Готово" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="60" y="460" width="80" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-17" value="В процессе" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="160" y="460" width="80" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-18" value="В планах" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="260" y="460" width="80" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="kuTB93GuFrIhw5HzWxcd-19" value="Легенда:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="60" y="430" width="40" height="20" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile>
+    <diagram id="hZKHBh_DFRJHr7uW6gX6" name="Page-1">
+        <mxGraphModel dx="807" dy="436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-10" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="50" width="200" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-11" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="50" width="200" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-9" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="50" width="200" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-1" value="&lt;font color=&quot;#000000&quot;&gt;Исследование готовых моделей/решений&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="90" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-2" value="&lt;font color=&quot;#000000&quot;&gt;Изучение датасета&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="200" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-4" value="&lt;font color=&quot;#000000&quot;&gt;Поиск готовых решений для распознавания движения&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="310" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-5" value="&lt;font color=&quot;#000000&quot;&gt;Написание скрипта для подготовки изображений для обучения&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="240" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-6" value="&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;Написание пайплайна для обучения модели&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;(или подготовка существующего)&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="140" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-8" value="&lt;font color=&quot;#000000&quot;&gt;Обучение модели и совершенствование модели и датасета&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="200" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-12" value="Этап исследования проблемы" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="60" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-13" value="Этап подготовки решения" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="60" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-14" value="Этап совершенствования решения" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="60" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-16" value="&lt;font color=&quot;#000000&quot;&gt;Готово&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="460" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-17" value="&lt;font color=&quot;#000000&quot;&gt;В процессе&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="460" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-18" value="&lt;font color=&quot;#000000&quot;&gt;В планах&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="460" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="kuTB93GuFrIhw5HzWxcd-19" value="Легенда:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="430" width="40" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
