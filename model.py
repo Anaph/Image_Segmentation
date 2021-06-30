@@ -56,7 +56,7 @@ def conv2d_block(input_tensor, n_filters, kernel_size=3, batchnorm=True, activat
 
         
 def unet_custom(n_classes, image_height, image_width, image_channels=3, model_depth=3,
-              activation='relu', n_filters=32, dropout=0.1, batchnorm = True):
+              activation='relu', n_filters=32, dropout=0.2, batchnorm = True):
 
     list_conv = []
     list_layers = []
@@ -123,31 +123,33 @@ def train_gen(images_path, segs_path, batch_size,
             image_name = next(image_names_it)
 
             image = cv2.imread(images_path + image_name)
-            seg = cv2.imread(segs_path + image_name)
-
-            image = np.float32(cv2.resize(image, (width, height)))
-            image = image - np.mean(image)
-
+            # image = np.float32(cv2.resize(image, (width, height)))
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            image = image.astype(np.float32)
+            image -= 127.5 #bad norm
             arr_image.append(image)
 
-            seg = cv2.resize(seg, (width, height))
+            seg = cv2.imread(segs_path + image_name)
+            # seg = cv2.resize(seg, (width, height))
             seg_labels = np.zeros((height,width, n_classes))
             seg = seg[:, :, 0]
-
             for i in range(n_classes):
                 seg_labels[:, :, i] = (seg == i).astype(int)
-            
             arr_seg.append(seg_labels)
 
         yield np.array(arr_image), np.array(arr_seg)
 
 def predict_model(model, path, n_classes, height, width):
     image = cv2.imread(path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = np.float32(cv2.resize(image, (width, height)))
-    image = image - np.mean(image)
+
+    image -= 127.5 #bad norm
 
     pr = model.predict(np.array([image]))[0]
     pr = pr.reshape((height,  width, n_classes)).argmax(axis=2)
     return pr
+
+
 
             
