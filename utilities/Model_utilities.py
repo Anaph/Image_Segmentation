@@ -1,6 +1,7 @@
 from keras import backend as K
 from keras.models import *
 from keras.layers import *
+
 import os
 import cv2
 import numpy as np
@@ -38,7 +39,9 @@ class doubleIteratorDown:
             return last
         raise StopIteration
 
-
+# Convolution layer, 
+# need to think about other normalization methods 
+# instead of batch normalization
 def conv2d_block(input_tensor, n_filters, kernel_size=3, batchnorm=True, activation='relu'):
     """Function to add 2 convolutional layers with the parameters passed to it"""
     # first layer
@@ -57,7 +60,7 @@ def conv2d_block(input_tensor, n_filters, kernel_size=3, batchnorm=True, activat
     
     return x
 
-        
+# Model of neural network       
 def unet_custom(n_classes, image_height, image_width, image_channels=3, model_depth=3,
               activation='relu', n_filters=32, dropout=0.2, batchnorm = True):
 
@@ -92,6 +95,7 @@ def unet_custom(n_classes, image_height, image_width, image_channels=3, model_de
     
     return model
 
+# Loop through all files and record their unique names
 def get_file_names(images_path,segs_path):
     image_files = []
     segs_files = []
@@ -111,17 +115,27 @@ def get_file_names(images_path,segs_path):
                             f"{len(image_files)}  !=  {len(segs_files)}")
     return image_files
 
-def norm_image(image): #bad norm
-    return image - 127.5
+# Norm to [0,1]
+def norm_image(image): 
+    return (image - np.min(image))/np.ptp(image)
 
-def train_gen(images_path, segs_path, batch_size,
-                n_classes, height, width):
-    
+# Function for dividing a dataset into training and validation
+# returns a looped iterator
+def fetch_delimiter(images_path, segs_path, val_part = 0.05):
     list_names = get_file_names(images_path, segs_path)
     random.shuffle(list_names)
-    image_names_it = itertools.cycle(list_names)
 
+    list_names_train = list_names[int(len(list_names) * val_part) : len(list_names)]
+    image_names_train_it = itertools.cycle(list_names_train)
 
+    list_names_val = list_names[0 : int(len(list_names) * val_part)]
+    image_names_val_it = itertools.cycle(list_names_val)
+    return image_names_train_it, image_names_val_it
+
+# Generator for training and/or validation model
+def fetch_gen(image_names_it, images_path, segs_path, batch_size,
+                n_classes, height, width):
+    
     while True:
         arr_image = []
         arr_seg = []
@@ -129,10 +143,9 @@ def train_gen(images_path, segs_path, batch_size,
             image_name = next(image_names_it)
 
             image = cv2.imread(images_path + image_name)
-
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = np.float32(cv2.resize(image, (width, height)))
 
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = image.astype(np.float32)
             image = norm_image(image)
             arr_image.append(image)
@@ -149,19 +162,21 @@ def train_gen(images_path, segs_path, batch_size,
 
         yield np.array(arr_image), np.array(arr_seg)
 
+# Model prediction,
+# takes the path to the picture
 def predict_model(model, path, n_classes, height, width):
     image = cv2.imread(path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
     image = np.float32(cv2.resize(image, (width, height)))
-
+    image = image.astype(np.float32)
     image = norm_image(image)
 
     pr = model.predict(np.array([image]))[0]
     pr = pr.reshape((height,  width, n_classes)).argmax(axis=2)
     return pr
 
-
+# Label and picture gluing
 def concat_legends(seg_img, legend_img):
 
     new_h = np.maximum(seg_img.shape[0], legend_img.shape[0])
@@ -175,7 +190,7 @@ def concat_legends(seg_img, legend_img):
     return out_img
 
 
-
+# Label picture generator
 def get_img_legends(colored_labels,width=100,height=500):
 
     scale = int(height/len(colored_labels))
@@ -192,11 +207,11 @@ def get_img_legends(colored_labels,width=100,height=500):
     return img_legend
 
 
-def overlay_seg_image(inp_img, seg_img):
+# def overlay_seg_image(inp_img, seg_img):
+#     fused_img = (inp_img/2 + seg_img/2).astype('uint8')
+#     return fused_img
 
-    fused_img = (inp_img/2 + seg_img/2).astype('uint8')
-    return fused_img
-
+# Random color generator for labels
 def gen_color_for_labels(labels):
     dict_labels = {}
     for label in labels:
@@ -204,7 +219,7 @@ def gen_color_for_labels(labels):
         dict_labels[label] = [int(256*i) for i in colorsys.hls_to_rgb(h,l,s)]
     return dict_labels
 
-
+# Filling the predicted image with color
 def get_colored_segmentation_image(seg_arr, colored_labels):
     output_height = seg_arr.shape[0]
     output_width = seg_arr.shape[1]
@@ -219,19 +234,31 @@ def get_colored_segmentation_image(seg_arr, colored_labels):
 
     return seg_img
 
+#Combines several functions to display the predicted image in a human-readable form
+def visualize_segmentation(seg_arr, path, colored_labels):
 
-def visualize_segmentation(seg_arr, inp_img, colored_labels):
+    image = cv2.imread(path)
 
-    seg_img = get_colored_segmentation_image(seg_arr, colored_labels)
+    seg = get_colored_segmentation_image(seg_arr, colored_labels)
 
-    seg_img = (inp_img/2 + seg_img/2).astype('uint8')
+    seg = (image/2 + seg/2).astype('uint8')
 
-    img_legend = get_img_legends(colored_labels,height=seg_img.shape[0])
+    img_legend = get_img_legends(colored_labels,height=seg.shape[0])
 
-    seg_img = concat_legends(seg_img, img_legend)
+    seg_img = concat_legends(seg, img_legend)
 
     return seg_img
 
+
+def predict_model_visualize(model, path, colored_labels, height, width):
+
+    pr = predict_model(model, path, len(colored_labels), height, width)
+
+    o = visualize_segmentation(pr, path, colored_labels)
+
+    return o
+
+# Metrics
 def dice_coef(y_true, y_pred, smooth=1):
   intersection = K.sum(y_true * y_pred, axis=[1,2,3])
   union = K.sum(y_true, axis=[1,2,3]) + K.sum(y_pred, axis=[1,2,3])
