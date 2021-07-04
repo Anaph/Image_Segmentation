@@ -1,0 +1,3 @@
+[submodule "rt-motion-detection-opencv-python"]
+	path = rt-motion-detection-opencv-python
+	url = https://github.com/Anaph/rt-motion-detection-opencv-python

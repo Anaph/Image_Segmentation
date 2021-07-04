@@ -2,4 +2,4 @@
 /tmp
 /.vscode
 /__pycache__
-/rt-motion-detection-opencv-python
+/rt-motion-detection-opencv-python/motion_detector/bin

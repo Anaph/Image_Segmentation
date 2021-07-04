@@ -1,42 +1,74 @@
 # Image_Segmentation
 
+Semantic Image Segmentation Project.
+Images and markup are generated from the dataset: https://cvgl.stanford.edu/projects/uav_data/
+# Installation
 
-Статус на данный момент:
+Tested on python3.6, ubuntu18.04
 
-Ведется написание собственного модуля подготовки изображений для модели.
+## Download rep
 
-![In progress](img/Image_Segmentation.png "Схема работ")
+*`git clone https://github.com/Anaph/Image_Segmentation`
+
+*`cd Image_Segmentation`
+
+## Create virtualenv
+
+*`virtualenv --no-site-packages --python=python3 ImageSegmentation`
+
+*`source ImageSegmentation/bin/activate`
+
+## Build rt-motion-detection-opencv-python
+
+1) Install requirements
+
+*`sudo apt install gcc make pkg-config`
+
+2) Build
+
+*`cd rt-motion-detection-opencv-python`
+
+*`python3 setup.py build`
+
+*`python3 setup.py bdist_wheel`
+
+*`cd ..`
+
+## Preparing the workbench
+
+1) Install requirements
+
+*`pip3 install -r requirements.txt`
+
+2) Work!
 
 
+# Instructions
 
+## Folders
 
+*`img` - Folder with project pictures
 
+*`legacy` - Folder with old project files
 
-# To Do
+*`models` - Folder with models
 
-0) Подумать над модернизацией преобразования изображений перед обучением
+*`utilities` - Folder with utilities folder for this project
 
-1) ~~Добавить функцию наложения сегментированного изображение на исходное для наглядного анализа~~
+## Files
 
-2) ~~Добавить автосохранение модели~~
+*`utilities/CV_image_markup.py` - Utility for dataset markup
 
-3) ~~Сделать небольшой блокнот для работы с датасетом~~
+Example use: `python3 utilities/CV_image_markup.py -i <inputvideo> -a <inputannotation> -p <outputimage> -m <outputlabel>`
 
-4) Оформить инструкцию по развертыванию кода
+You can also use `-h`
 
-5) ~~Форкнуть библиотеку "motion_detection" и переписать setup.py для возможности человеческой установки~~
+Usage example in Dataset_Markup.ipynb
 
-6) Обучить модель на большом наборе данных
+*`utilities/Model_utilities.py` - Utility for creating and training a model
 
-# Здесь !будет! инструкция
+Usage example in Image_Segmentation.ipynb
 
-virtualenv --no-site-packages --python=python3 ImageSegmentation
+*`Image_Segmentation.py` - The notebook in which the model is trained and predicted
 
-
-source ./ImageSegmentation/bin/activate
-
-
-pip3 install -r requirements.txt
-
-
-python3 CVtest.py -i ./tmp/video.mov -a ./tmp/annotations.txt -p ./tmp/test/image -m ./tmp/label/image
+*`Dataset_Markup.py` - The notebook in which the dataset markup occurs
