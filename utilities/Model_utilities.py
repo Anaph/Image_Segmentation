@@ -134,7 +134,7 @@ def fetch_delimiter(images_path, segs_path, val_part = 0.05):
 
 # Generator for training and/or validation model
 def fetch_gen(image_names_it, images_path, segs_path, batch_size,
-                n_classes, height, width , binary = False):
+                n_classes, height, width):
     
     while True:
         arr_image = []
@@ -158,13 +158,7 @@ def fetch_gen(image_names_it, images_path, segs_path, batch_size,
             seg_labels = np.zeros((height,width, n_classes))
             seg = seg[:, :, 0]
             for i in range(n_classes):
-                if binary:
-                    if i == 0:
-                        seg_labels[:, :, 0] = (seg == i).astype(int)
-                    else:
-                        seg_labels[:, :, 1] += (seg == i).astype(int)
-                else:
-                    seg_labels[:, :, i] = (seg == i).astype(int)
+                seg_labels[:, :, i] = (seg == i).astype(int)
             arr_seg.append(seg_labels)
 
         yield np.array(arr_image), np.array(arr_seg)
